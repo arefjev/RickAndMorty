@@ -1,4 +1,4 @@
-package ru.arefyev.rickandmorty.ui.theme
+package ru.arefyev.rickandmorty.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
