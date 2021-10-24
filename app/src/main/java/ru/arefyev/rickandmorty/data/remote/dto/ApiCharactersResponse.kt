@@ -3,7 +3,7 @@ package ru.arefyev.rickandmorty.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiCharactersResponse(
+data class ApiCharactersResponse<T>(
     val info: Info,
     val results: List<Result>
 )
