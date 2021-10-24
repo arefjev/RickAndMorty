@@ -1,2 +1,3 @@
-# RickAndMorty
-The Rick and Morty Android App
+# The Rick and Morty Android App
+![Alt text](images/RickAndMortyArt.jpg?raw=true "Rick And Morty")
+
