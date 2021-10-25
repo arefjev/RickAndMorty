@@ -2,6 +2,6 @@ package ru.arefyev.rickandmorty.data.remote.dto
 
 
 data class ApiCharactersResponse<T>(
-    val info: Info,
-    val results: List<Character>
+    val info: InfoDto,
+    val results: List<CharacterDto>
 )
