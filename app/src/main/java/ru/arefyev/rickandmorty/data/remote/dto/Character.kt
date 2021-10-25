@@ -3,7 +3,7 @@ package ru.arefyev.rickandmorty.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class Character(
     val created: String,
     val episode: List<String>,
     val gender: String,
