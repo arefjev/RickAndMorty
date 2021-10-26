@@ -6,5 +6,5 @@ import ru.arefyev.rickandmorty.data.remote.dto.CharacterDto
 
 interface CharacterRepository {
 
-    suspend fun getCharacters(page: Int): Response<ApiCharactersResponse<CharacterDto>>
+    suspend fun getCharacters(page: Int): Response<ApiCharactersResponse<List<CharacterDto>>>
 }
