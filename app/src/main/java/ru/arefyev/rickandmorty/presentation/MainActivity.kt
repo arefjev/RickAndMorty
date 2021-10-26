@@ -10,8 +10,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
+import ru.arefyev.rickandmorty.presentation.character_detail.CharacterDetailScreen
+import ru.arefyev.rickandmorty.presentation.character_list.CharacterListScreen
 import ru.arefyev.rickandmorty.presentation.ui.theme.RickAndMortyTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,22 +29,37 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.CharacterListScreen.route
+                    ) {
+                        composable(
+                            route = Screen.CharacterListScreen.route
+                        ) {
+                            CharacterListScreen(navController)
+                        }
+                        composable(
+                            route = Screen.CharacterDetailScreen.route + "/{character.id}"
+                        ) {
+                            CharacterDetailScreen()
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    RickAndMortyTheme {
-        Greeting("Android")
-    }
-}
+//@Composable
+//fun Greeting(name: String) {
+//    Text(text = "Hello $name!")
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    RickAndMortyTheme {
+//        Greeting("Android")
+//    }
+//}

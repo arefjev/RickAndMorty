@@ -9,6 +9,6 @@ import ru.arefyev.rickandmorty.data.remote.dto.CharacterDto
 interface RickAndMortyApi {
 
     // https://rickandmortyapi.com/api/character?page=1
-    @GET("/api/character")
-    suspend fun getCharacters(@Query("page") page: Int): Response<ApiCharactersResponse<CharacterDto>>
+    @GET("character")
+    suspend fun getCharacters(@Query("page") page: Int): Response<ApiCharactersResponse<List<CharacterDto>>>
 }

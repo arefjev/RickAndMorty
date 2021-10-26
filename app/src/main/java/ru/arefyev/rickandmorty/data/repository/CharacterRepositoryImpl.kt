@@ -11,7 +11,7 @@ class CharacterRepositoryImpl @Inject constructor(
     private val api: RickAndMortyApi
 ) : CharacterRepository {
 
-    override suspend fun getCharacters(page: Int): Response<ApiCharactersResponse<CharacterDto>> {
+    override suspend fun getCharacters(page: Int): Response<ApiCharactersResponse<List<CharacterDto>>> {
         return api.getCharacters(page)
     }
 }
