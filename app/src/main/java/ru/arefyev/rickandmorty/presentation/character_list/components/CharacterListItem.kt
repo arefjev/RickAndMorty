@@ -19,6 +19,7 @@ import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import ru.arefyev.rickandmorty.domain.model.Character
 
+
 @Composable
 fun CharacterListItem(
     character: Character,
@@ -49,6 +50,7 @@ fun CharacterListItem(
 
     }
 }
+
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
