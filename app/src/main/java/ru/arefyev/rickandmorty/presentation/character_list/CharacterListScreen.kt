@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import ru.arefyev.rickandmorty.presentation.Screen
+import ru.arefyev.rickandmorty.presentation.character_list.components.CharacterCardListItem
 import ru.arefyev.rickandmorty.presentation.character_list.components.CharacterListItem
 
 //@Preview
@@ -30,12 +31,19 @@ fun CharacterListScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.characters) { character ->
-                CharacterListItem(
+                CharacterCardListItem(
                     character = character,
                     onItemClick = {
                         navController.navigate(Screen.CharacterDetailScreen.route + "/${character.id}")
                     }
                 )
+
+//                CharacterListItem(
+//                    character = character,
+//                    onItemClick = {
+//                        navController.navigate(Screen.CharacterDetailScreen.route + "/${character.id}")
+//                    }
+//                )
             }
         }
 

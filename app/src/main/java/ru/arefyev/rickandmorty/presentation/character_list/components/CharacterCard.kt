@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -27,11 +28,29 @@ import coil.compose.rememberImagePainter
 import ru.arefyev.rickandmorty.domain.model.Character
 
 
-//@Composable
-//fun CharacterListItem(
-//    character: Character,
-//    onItemClick: (Character) -> Unit
-//) {
+@Composable
+fun CharacterCardListItem(
+    character: Character,
+    onItemClick: (Character) -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(180.dp)
+            .clickable { onItemClick(character) }
+            .padding(10.dp),
+        shape = RoundedCornerShape(12.dp),
+        elevation = 12.dp,
+
+    ) {
+        CharacterAvatar(character = character)
+//        Text(
+////            text = "# ${character.id} ${character.name} (${character.species})",
+//            text = character.name,
+//            style = MaterialTheme.typography.body1,
+//            overflow = TextOverflow.Ellipsis
+//        )
+    }
 //    Row(
 //        modifier = Modifier
 //            .fillMaxWidth()
@@ -56,74 +75,38 @@ import ru.arefyev.rickandmorty.domain.model.Character
 //        )
 //
 //    }
-//}
+}
 
 
-@Preview("CharacterAvatar")
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun CharacterAvatar(
-//    character: Character
-//    @PreviewParameter(AvatarPreviewParameterProvider::class) avatar: Avatar
+    character: Character
 ) {
-//    val shape = RoundedCornerShape(10.dp)
-//    Box(
-//        modifier = Modifier
-//            .height(140.dp)
-//            .width(140.dp)
-//            .clip(shape)
-//    ) {
+    val shape = RoundedCornerShape(12.dp)
+    Box(
+        modifier = Modifier
+            .clip(shape)
+            .height(120.dp)
+            .width(120.dp)
+//            .fillMaxSize()
+    ) {
         val painter = rememberImagePainter(
-            data = "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+            data = character.image,
             builder = {
-                crossfade(100)
-
+                crossfade(1000)
             }
         )
         val painterState = painter.state
         Image(
-            modifier = Modifier.size(140.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .size(150.dp),
             painter = painter,
             contentDescription = "Avatar"
         )
-//        contentScale = ContentScale.Crop,
-//        modifier = Modifier.fillMaxWidth()
-//        Image(
-//            painter = rememberImagePainter(
-//                data = "https://www.example.com/image.jpg",
-//                onExecute = ExecuteCallback { _, _ -> true },
-//                builder = {
-//                    crossfade(true)
-//                    placeholder(R.drawable.placeholder)
-//                    transformations(CircleCropTransformation())
-//                }
-//            ),
-//            contentDescription = null,
-//            modifier = Modifier.size(128.dp)
-//        )
-
         if (painterState is ImagePainter.State.Loading) {
             CircularProgressIndicator()
         }
     }
-//}
-
-
-//@Preview
-//@Composable
-//fun UserProfilePreview(
-//    @PreviewParameter(UserPreviewParameterProvider::class) user: User
-//) {
-//    UserProfile(user)
-//}
-
-
-//class AvatarPreviewParameterProvider : PreviewParameterProvider<Avatar> {
-//    override val values = sequenceOf(
-//        Avatar("https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
-//        Avatar("https://rickandmortyapi.com/api/character/avatar/16.jpeg"),
-//        Avatar("https://rickandmortyapi.com/api/character/avatar/36.jpeg")
-//    )
-//}
-//
-//data class Avatar(val url: String)
+}
